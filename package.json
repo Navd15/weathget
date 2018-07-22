@@ -1,0 +1,21 @@
+{
+  "name": "weathery",
+  "version": "1.0.1",
+  "description": "Weather widget",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^2.0.5"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "js",
+    "widget",
+    "weather"
+  ],
+  "author": "NAvd15",
+  "license": "ISC"
+}
