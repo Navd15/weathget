@@ -1,8 +1,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" >
-<script src="res/addOnJS/jquery-3.3.1.min.js">
-</script>
+
 <link  href="styles/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -20,19 +19,21 @@ Add Location
 
 
 <div class="main"> 
-        <header>
+        <div id="slider">
+        <header id="header">
                 <nav>
-                
-                </nav>
+                       
+                <img id="settings" src="res/img/settings.png">
+               
+        </nav>
                 
                 
                 </header>
 
-
+        </div>
 
 </div>
-<script>
-        require('./renderer.js')
-      </script>
+<script>window.$=window.jQuery=require('./res/addOnJS/jquery-3.3.1.min.js');</script>
+<script src="res/anim/jsanim.js" ></script>
 </body>
 </html>
