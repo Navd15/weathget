@@ -1,13 +1,34 @@
-$(document).ready(
-function cs(){
+$( document ).ready(
+    function(){
+        let slider=$('#slider');
+        let set=$('#settings');
 
-     let slider=$('#slider');
+        set.on('hover',()=>{
+$(this).css({'opacity':1});
 
-    $('#settings').click(()=>{
-        console.log("f");
-        $(this).toggleClass('forSet')  
-        $(slider).toggleClass("toLeft")
+        })
+       set.click(function(){
+
+        $('.noLocMsg').css({"filter":"blur(3px)"})
+slider.animate({
+left:"0px"
 
 
-}
-)})
+},100);
+   
+   
+   }
+   )
+
+   $('.noLocMsg').on('click',()=>{
+    $('.noLocMsg').css({"filter":''});
+    slider.animate({
+left:'-140px'
+
+    },100)
+})
+
+
+
+
+})

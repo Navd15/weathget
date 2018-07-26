@@ -1,39 +1,51 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" >
-
+<script>window.$=window.jQuery=require('./res/addOnJS/jquery-3.3.1.min.js');</script>
 <link  href="styles/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="noLocMsg">
-<p id="par_noLoc">
-No location found
-</p>
 
-<a  id="but_addLoc" href="/addLoc.html">
-
-Add Location
-</a>
-
-</div>
 
 
 <div class="main"> 
-        <div id="slider">
+        <div class="toLeft" id="slider">
         <header id="header">
                 <nav>
-                       
-                <img id="settings" src="res/img/settings.png">
+                     
                
+                <img id="add" src="res/img/plus.png">
+  
         </nav>
+<ul id="list">
+Locations      
+</ul>
+
                 
                 
                 </header>
 
         </div>
+        <div class="noLocMsg">
+                        <p id="par_noLoc">
+                        No location found
+                        </p>
+                        
+                        <a  id="but_addLoc" href="/addLoc.html">
+                        
+                        Add Location
+                        </a>
+                        
+                        </div>
+                        <footer>
+                                        <img id="settings" src="res/img/settings.png">
+                        </footer>
+
 
 </div>
-<script>window.$=window.jQuery=require('./res/addOnJS/jquery-3.3.1.min.js');</script>
-<script src="res/anim/jsanim.js" ></script>
+
+<script src="res/anim/jsanim.js"></script>
+<script> require('./renderer.js')
+        </script>
 </body>
 </html>
