@@ -1,5 +1,4 @@
 const {app,BrowserWindow}= require('electron');
-const electron =require('electron')
 const fs=require('fs');
 let win;
 
