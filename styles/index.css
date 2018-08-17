@@ -1,10 +1,20 @@
-*{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+@font-face{
+font-family:'YantraManav';
+src:url('../res/fonts/Thin.ttf');
 }
-body{
-    margin: 0px 0px 0px 0px ;
+
+body {
+    margin: 0px 0px 0px 0px;
 }
-.noLocMsg #par_noLoc{
+
+
+.ico{
+
+height:40px ;
+width: 40px;
+
+}
+.noLocMsg #par_noLoc {
     width: fit-content;
     margin: auto;
     font-size: 15px;
@@ -20,9 +30,10 @@ body{
     top: 24%;
 }
 
-.noLocMsg #but_addLoc{
+.noLocMsg #but_addLoc {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
+    cursor: pointer;
     position: relative;
     display: block;
     margin-right: auto;
@@ -33,67 +44,149 @@ body{
     text-decoration: none;
     max-width: fit-content;
     top: 40%;
-
 }
 
-.noLocMsg  {
-/* filter: blur(1px); */
-background-color:rgba(255, 255, 255, 0.729);
+.noLocMsg {
+    /* filter: blur(1px); */
+    background-color: rgba(255, 255, 255, 0.729);
     height: 100%;
     backface-visibility: hidden;
-    background-blend-mode:hard-light;
-background:url("../res/img/pane.jpg") no-repeat;
-
-background-size: cover;
-
-
+    background-blend-mode: hard-light;
+    background: url("../res/img/pane.jpg") no-repeat;
+    background-size: cover;
 }
 
-#list{
-    color:black;
+#list {
+    color: black;
     background-color: rgb(222, 222, 222);
     display: block;
     font-size: 15px;
     padding: 0px 8px;
 }
 
-.main #add{
-  
-    height: 20px;
-    width:20px;
+.main #add {
     padding: 8px 8px;
 }
 
-.main #settings{
-    border-radius:100px;
+.main #sett {
+    border-radius: 100px;
     z-index: -9;
-  opacity: 0.6;
-    height: 20px;
-    width:20px;
-padding: 10px 10px;
-bottom: 0px;
-position: absolute;
-
-
+    opacity: 0.6;
+    padding: 10px 10px;
+    bottom: 0px;
+    position: absolute;
 }
-.main #slider{
+
+.main #slider {
     z-index: 9;
     position: absolute;
     width: 35%;
-    height:100%
+    height: 100%
 }
-.main #header{
+
+.main #header {
     height: 100%;
     background-color: rgba(222, 222, 222, 0.82);
     box-shadow: 0px -2px 11px black;
-    
 }
 
-.toLeft{
-
-left:-140px;
-
+.toLeft {
+    left: -140px;
 }
-footer{
+
+footer {
     position: fixed;
+}
+
+#noNet {
+    display: None;
+    width: 90%;
+    margin: auto;
+    font-size: 25px;
+    border-radius: 3px;
+    padding: 8px 8px;
+    color: #0f32ff;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    text-align: center;
+    z-index: 99;
+}
+
+/* 
+addLoc.html
+*/
+
+#loading{
+    height:50%;
+width: 30%;
+display: none;
+margin: auto;
+
+
+}
+
+#results {
+    display: inline;
+    width: 70%;
+}
+
+.list-group-item {
+    padding: 8px 20px !important;
+    border-radius: 0px !important;
+}
+
+#locUl li {
+    cursor: pointer;
+}
+#replacer{
+    height: 100%;
+}
+
+
+#lister {
+    position: absolute;
+    width: 70%;
+}
+
+#locSearch {
+    border-top-left-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    width: 100%;
+}
+
+
+/*------------Main Views------------*/
+
+
+#mainView{
+    font-family:YantraManav;
+    color: white;
+    height: 100%;
+background: #ffffff;
+background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #b978b2 100%);
+background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#b978b2 100%);
+background: radial-gradient(ellipse at center, #ffffff 0%,#b978b2 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b978b2',GradientType=1 );
+
+
+}
+
+.cityInfo #weatherInfo{
+position: sticky;
+    top: 10%;
+    width: 10%;
+    display: block;
+    margin-left: 20%;
+
+}
+
+.cityInfo .cityName{
+font-size: 60pt;
+    text-align: center;
+}
+.cityInfo #day{
+
+   font-size: 40pt !important; 
 }
