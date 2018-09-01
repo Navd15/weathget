@@ -1,9 +1,14 @@
 @font-face{
 font-family:'YantraManav';
-src:url('../res/fonts/Thin.ttf');
+src:url('../res/fonts/Yantramanav/Thin.ttf');
 }
+@font-face{
+    font-family:'Raleway';
+    src:url('../res/fonts/Raleway/Light.ttf');
+    }
 
 body {
+    border-radius: 2px;
     margin: 0px 0px 0px 0px;
 }
 
@@ -161,15 +166,16 @@ margin: auto;
 
 
 #mainView{
-    font-family:YantraManav;
-    color: white;
+    box-shadow: 0px 0px 10px 0px black;
     height: 100%;
-background: #ffffff;
-background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #b978b2 100%);
-background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#b978b2 100%);
-background: radial-gradient(ellipse at center, #ffffff 0%,#b978b2 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b978b2',GradientType=1 );
-
+    font-family:YantraManav;
+    color:rgb(255, 255, 255);
+    width: 35%;
+    border-radius: 10px 0px 0px 10px;
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top left, #ff9950, #ff0095b3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 
 }
 
@@ -183,10 +189,49 @@ position: sticky;
 }
 
 .cityInfo .cityName{
-font-size: 60pt;
-    text-align: center;
+    font-family: YantraManav;
+font-weight: 800;    
+font-weight: 600;
+font-size: 20pt;
+    text-align:left;
+}
+#temp{
+    font-weight: 100;
+    font-family: Raleway;
+    margin-bottom: 0px;
+    margin-top: 70%;
+    padding-left:50px;
+font-size: 10em;
 }
 .cityInfo #day{
+    font-weight: 400;
+    padding-left:50px; 
+   font-size: 17pt !important; 
+}
+#condition{
+    font-weight: 400;
+}
+#container{
+display: flex;
+flex-wrap: wrap;
 
-   font-size: 40pt !important; 
+}
+
+#stats{
+    font-family: Raleway;
+    color: rgb(160, 160, 160);
+width:65%;
+height: 100%;
+
+}
+#statistics{
+    
+font-size: 20pt;
+}
+#line{
+    width: 100%;
+}
+.info{
+
+    padding-left:50px; 
 }
