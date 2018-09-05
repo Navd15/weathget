@@ -133,7 +133,7 @@ margin: auto;
 #results {
     display: inline;
     width: 70%;
-}
+}   
 
 .list-group-item {
     padding: 8px 20px !important;
@@ -218,20 +218,59 @@ flex-wrap: wrap;
 }
 
 #stats{
-    font-family: Raleway;
+    font-family: Yantramanav;
     color: rgb(160, 160, 160);
 width:65%;
 height: 100%;
 
 }
 #statistics{
-    
 font-size: 20pt;
 }
-#line{
-    width: 100%;
-}
-.info{
 
+.info{
     padding-left:50px; 
+}
+
+#detail{
+    text-align: center;
+    display: flex;
+    list-style: none;
+}
+li{
+text-align: center;
+    margin-right: 18%;;
+}
+li img{
+    padding-top: 30px;
+height: 8%;
+}
+li div{
+font-size: 15pt;
+    text-align: center;
+}
+
+#forecast{
+    margin-left: 50px;
+}
+#forecast hr{
+    margin:0px;
+}
+
+li hr{
+    height: 3px;
+    border:none;
+background-color: tomato;
+}
+
+div #ulForecast{
+    padding: 0px;
+margin: 0px;
+    display: flex;
+    list-style: none;
+}
+
+#ulForecast h1{
+font-size: 20pt;
+;
 }
