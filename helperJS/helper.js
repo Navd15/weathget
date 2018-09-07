@@ -3,10 +3,23 @@
  * Created by navcer on 01-08-2018.
  *
  */
-const key = 'A2V9GFbwbk8jX6F2V1jua6KcHKtAy7on';
-const initialURL = `http://dataservice.accuweather.com`
 
-function setListClick(id) {
+ /* Class contains keys and stuff for API calling */
+class creds{
+    static Keys=()=>{
+return {key : 'A2V9GFbwbk8jX6F2V1jua6KcHKtAy7on',
+initialURL : `http://dataservice.accuweather.com`,
+'12HourApi' : `/forecasts/v1/hourly/12hour/`,
+
+}
+    }
+}
+
+/* ---This method triggeres when user selects the location from 
+list from html page---
+*/
+function setListClick(id) { 
+    let key=creds.Keys().key;
     let url = `/forecasts/v1/daily/1day/${id}?apikey=${key}&details=false&metric=true`
     fetch(`${initialURL}/${url}`).then((resolve) => {
         resolve.json().then((resolve) => {
@@ -16,12 +29,15 @@ function setListClick(id) {
 
     }, (reject) => {
         console.log("Rejected");
-
     })
 
 }
 
+
+
 $(document).ready(function () {
+
+
     let replacer=document.getElementById('replacer');
     
 let addLocBut=$('#but_addLoc');
@@ -36,9 +52,9 @@ addLocBut.on('click',()=>{
 /* --------------------------------------------------------------- */
 
         function searchLoc(loc){
+            let key=creds.Keys().key;
+            let initialURL=creds.Keys().initialURL;
             return new Promise((resolve, rej) => {
-
-
                 let url = `${initialURL}/locations/v1/cities/autocomplete?apikey=${key}&q=${loc}`;
 
                 fetch(url).then(
@@ -70,8 +86,7 @@ function exploit(){
             loading.css('display','block')
             if (searchBar.value != undefined) {
                 searchLoc(searchBar.value).then((res) => {
-                   
-                   
+                    fill.s(res)
                     gen.genList(res, locUl).then((res)=>{
                        if(res==true){
                       loading.css('display','none')
@@ -89,3 +104,16 @@ function exploit(){
     }
 
 )
+
+
+
+class FutureCast{
+    static castRes=(key,initialURL)=>{
+let url=`${initialURL}`
+        return fetch().then((resolve)=>{
+
+})
+
+
+    }
+}
