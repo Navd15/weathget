@@ -96,7 +96,7 @@ width: 40px;
 }
 
 .toLeft {
-    left: -140px;
+    left: -170px;
 }
 
 footer {
@@ -132,7 +132,6 @@ margin: auto;
 
 #results {
     display: inline;
-    width: 70%;
 }   
 
 .list-group-item {
@@ -199,7 +198,7 @@ font-size: 20pt;
     font-weight: 100;
     font-family: Raleway;
     margin-bottom: 0px;
-    margin-top: 70%;
+    margin-top: 65%;
     padding-left:50px;
 font-size: 10em;
 }
@@ -233,6 +232,7 @@ font-size: 20pt;
 }
 
 #detail{
+    margin: 0px;
     text-align: center;
     display: flex;
     list-style: none;
@@ -242,7 +242,7 @@ text-align: center;
     margin-right: 18%;;
 }
 li img{
-    padding-top: 30px;
+    padding-top: 10px;
 height: 8%;
 }
 li div{
@@ -270,7 +270,20 @@ margin: 0px;
     list-style: none;
 }
 
+#ulForecast h1:hover{
+
+
+}
 #ulForecast h1{
+    cursor: pointer;
 font-size: 20pt;
 ;
+}
+table{
+    border-collapse: separate;
+    font-family: YantraManav;
+    border-spacing: 15px;
+font-size: 20pt;
+font-weight: 500;
+    width:100%;;
 }
