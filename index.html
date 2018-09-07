@@ -1,51 +1,64 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" >
-<script>window.$=window.jQuery=require('./res/addOnJS/jquery-3.3.1.min.js');</script>
-<link  href="styles/index.css" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+                window.$ = window.jQuery = require('./res/addOnJS/jquery-3.3.1.min.js');
+        </script>
+      
+        <script src="./addLoc.js"></script>
+        <script src="./helperJS/fillInfo.js"></script>
+        <script src="./helperJS/generator.js"></script>
+        <script src="./helperJS/helper.js"></script>
+        <link href="styles/index.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet"  type="text/css" href="./res/addOnJS/bootstrap/css/bootstrap.css" >
 </head>
+
 <body>
+        <div class="main">
+                <div class="toLeft" id="slider">
+                        <header id="header">
+                                <nav>
 
 
+                                        <img id="add" class="ico" src="res/img/plus.png">
 
-<div class="main"> 
-        <div class="toLeft" id="slider">
-        <header id="header">
-                <nav>
-                     
-               
-                <img id="add" src="res/img/plus.png">
-  
-        </nav>
-<ul id="list">
-Locations      
-</ul>
+                                </nav>
+                                <ul id="list">
+                                        Locations
+                                </ul>
+                        </header>
 
-                
-                
-                </header>
+                </div>
+                <div id="replacer">
+                <div class="noLocMsg">
+                        <p id="par_noLoc">
+                                No location found
+                        </p>
+
+                        <button class="btn btn-primary" id="but_addLoc">
+
+                                Add Location
+                        </button>
+                        <p id="noNet">
+                                Unable to access network
+                                <br> Please try again.
+                        </p>
+                </div>
+        </div>
+
+
+                <footer>
+                        <img id="sett" class="ico" src="res/img/settings.png">
+                </footer>
+
 
         </div>
-        <div class="noLocMsg">
-                        <p id="par_noLoc">
-                        No location found
-                        </p>
-                        
-                        <a  id="but_addLoc" href="/addLoc.html">
-                        
-                        Add Location
-                        </a>
-                        
-                        </div>
-                        <footer>
-                                        <img id="settings" src="res/img/settings.png">
-                        </footer>
 
-
-</div>
-
-<script src="res/anim/jsanim.js"></script>
-<script> require('./renderer.js')
+        <script src="res/anim/jsanim.js"></script>
+        <script>
+                require('./renderer.js')
         </script>
 </body>
+
 </html>
