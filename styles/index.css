@@ -12,11 +12,10 @@ body {
     margin: 0px 0px 0px 0px;
 }
 
-
 .ico{
 
-height:40px ;
-width: 40px;
+height:30px ;
+width: 30px;
 
 }
 .noLocMsg #par_noLoc {
@@ -96,7 +95,7 @@ width: 40px;
 }
 
 .toLeft {
-    left: -170px;
+    left: -185px;
 }
 
 footer {
@@ -161,56 +160,51 @@ margin: auto;
 }
 
 
-/*------------Main Views------------*/
+/*------------Main View------------*/
 
 
 #mainView{
     box-shadow: 0px 0px 10px 0px black;
     height: 100%;
+    background-size: cover;
     font-family:YantraManav;
     color:rgb(255, 255, 255);
     width: 35%;
-    border-radius: 10px 0px 0px 10px;
-    background: #ee0979;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top left, #ff9950, #ff0095b3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-
+    background-image: url('../res/img/grad.png');
 }
 
-.cityInfo #weatherInfo{
-position: sticky;
-    top: 10%;
-    width: 10%;
-    display: block;
-    margin-left: 20%;
+.cityInfo{
+    position: sticky;
+    top: 2%;
 
 }
 
 .cityInfo .cityName{
-    font-family: YantraManav;
-font-weight: 800;    
-font-weight: 600;
-font-size: 20pt;
-    text-align:left;
+letter-spacing: 1px;
+ font-family: YantraManav; 
+font-weight: 400;
+font-size: 10pt;
+text-align:left;
 }
 #temp{
     font-weight: 100;
-    font-family: Raleway;
+    font-family: YantraManav;
     margin-bottom: 0px;
     margin-top: 65%;
-    padding-left:50px;
-font-size: 10em;
+    padding-left:30px;
+font-size:80px;
 }
 .cityInfo #day{
     font-weight: 400;
-    padding-left:50px; 
-   font-size: 17pt !important; 
+    padding-left:30px; 
+   font-size: 10pt !important; 
 }
 #condition{
     font-weight: 400;
 }
+
 #container{
+width: 100%;
 display: flex;
 flex-wrap: wrap;
 
@@ -224,11 +218,15 @@ height: 100%;
 
 }
 #statistics{
-font-size: 20pt;
+font-size: 10pt;
 }
 
+hr{margin-top: 0px !important;
+margin-bottom: 0px !important;}
+
 .info{
-    padding-left:50px; 
+    margin-top: 2%;
+    padding-left:30px; 
 }
 
 #detail{
@@ -239,19 +237,20 @@ font-size: 20pt;
 }
 li{
 text-align: center;
-    margin-right: 18%;;
+    margin-right: 20%;
 }
 li img{
-    padding-top: 10px;
-height: 8%;
+    padding-bottom: 2px;
+    padding-top: 6px;
+    height: 12%;
 }
 li div{
-font-size: 15pt;
+font-size: 8pt;
     text-align: center;
 }
 
 #forecast{
-    margin-left: 50px;
+    margin-left: 30px;
 }
 #forecast hr{
     margin:0px;
@@ -270,20 +269,16 @@ margin: 0px;
     list-style: none;
 }
 
-#ulForecast h1:hover{
-
-
-}
 #ulForecast h1{
     cursor: pointer;
-font-size: 20pt;
+font-size: 10pt;
 ;
 }
 table{
     border-collapse: separate;
     font-family: YantraManav;
-    border-spacing: 15px;
-font-size: 20pt;
+    border-spacing: 10px;
+font-size: 10pt;
 font-weight: 500;
     width:100%;;
 }
