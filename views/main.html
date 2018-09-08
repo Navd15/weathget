@@ -1,14 +1,11 @@
-<script   src="../helperJS/fillInfo.js"></script>
-<link rel="stylesheet" type="text/css" href="../styles/index.css">
 <div id="container">
     <div id="mainView">
+        <link href="../styles/index.css" rel="stylesheet" type="text/css" />
         <div class="cityInfo">
-
-            <h1 id="day">August 18 , 2018 scope.delta</h1>
+            <h1 id="day">${now.date}</h1>
             <div>
-                <h1 id="temp">24&deg;<br><span class="cityName">Amritsar<br><span id="condition">Sunny</span></span></h1>
+                <h1 id="temp">${now.temp}&deg;<br><span class="cityName">${now.name}<br><span id="condition">${now.condition}</span></span></h1>
 
-                <!-- <h4  class="cityName" id="day">Wednesday, Aug 18 </h4> -->
             </div>
         </div>
 
@@ -19,31 +16,30 @@
             <h1 id="statistics">Statistics</h1>
             <hr>
             <ul id="detail">
-
                 <li class="li Icons">
                     <div>
-                        <img src="../res/img/icons/rain.png">
-                        <p>65%</p>
+                        <img src="./res/img/icons/rain.png">
+                        <p>${now.rain}%</p>
                     </div>
                 </li>
 
                 <li>
                     <div>
-                        <img src="../res/img/icons/windsock.png">
-                        <p>Easterly</p>
+                        <img src="./res/img/icons/windsock.png">
+                        <p>${now.wind_dir}</p>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <img src="../res/img/icons/air.png">
-                        <p>3.5km/hr</p>
+                        <img src="./res/img/icons/air.png">
+                        <p>${now.wind}</p>
                     </div>
                 </li>
 
                 <li>
                     <div>
-                        <img src="../res/img/icons/cloud.png">
-                        <p>60%</p>
+                        <img src="./res/img/icons/cloud.png">
+                        <p>${now.cloud}%</p>
                     </div>
                 </li>
             </ul>
@@ -64,7 +60,7 @@
 <tr>
 <td>1:00 pm</td>
 
- <td style="display:flex;float: left; padding-left:70%">Sunny<span style="font-size: 24pt;color:rgb(255, 71, 141)">&ThinSpace; 24&deg;</span></td>
+ <td style="display:flex;float: left; padding-left:50%">Sunny<span style="font-size: 20pt;color:rgb(255, 71, 141)">&ThinSpace; 24&deg;</span></td>
 
 </tr>
 
