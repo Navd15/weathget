@@ -1,7 +1,9 @@
 $(document).ready(
-
-
     function () {
+        let list=$('#list');
+        let out=false;
+        let searchDiv=$('#search');
+        let add=$('#add');
         let slider = $('#slider');
         let set = $('#sett');
 
@@ -18,19 +20,43 @@ $(document).ready(
             })
             slider.animate({
                 left: "0px"
-
-
             }, 100);
 
 
         })
 
+add.on('click',()=>{
+console.log(out);
+if(out){
+list.animate({'margin-top':'-40px'},100)
+searchDiv.animate({
+left:'-150px'
+
+},100)
+out=false;
+return;
+}
+else
+out=true;
+list.animate({'margin-top':'0px'},100)
+searchDiv.animate({
+    left:'0px'
+},100);
+
+})
+
         $('#replacer').on('click', () => {
             $('.noLocMsg').css({
                 "filter": ''
             });
+
+            list.animate({'margin-top':'-40px'},100)
+            searchDiv.animate({
+                left:'-150px'
+                
+                },100);
             slider.animate({
-                left: '-140px'
+                left: '-180px'
 
             }, 100)
         })
@@ -38,4 +64,4 @@ $(document).ready(
 
 
 
-    })
+    }())
