@@ -1,18 +1,25 @@
-class gen{
+class gen {
 
-static genList(locs,ul){
-    ul.innerHTML="";
-    for(let location of locs){
-let li=document.createElement('li');
-li.classList.add('list-group-item');
-li.innerText=`${location.LocalizedName},${location.AdministrativeArea.ID},${location.Country.LocalizedName}`;
-ul.appendChild(li);
-}
+    static genList(locs, ul) {
+
+        return new Promise((resolve,reject)=>{
+
+            ul.innerHTML = "";
+            for (let location of locs) {
+                let li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.classList.add('list-group-item-action');
+                li.id = `${location.name}`;
+                li.setAttribute("onclick", `setListClick(this.id)`);
+                li.innerText = `${location.name}`;
+                ul.appendChild(li);
+            }
+            resolve(true);
+        })
+       
 
 
-
-
-}
+    }
 
 
 
