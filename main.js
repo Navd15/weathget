@@ -6,6 +6,8 @@ const {
     Tray,
     Menu
 } = require('electron');
+
+const fs=require('fs');
 const os = require('os');
 
 let win;
@@ -22,16 +24,17 @@ transparent:true,
         height: 290,
         resizable: true,
         frame:false,
+
         webPreferences: {
             devTools: true
         }
     })
-    console.log(os.platform());
     
+    createFolder();
     if(os.platform=='win32'){
     tra();
     }
-    
+
     win.loadFile('./index.html')
 
 }
@@ -47,9 +50,26 @@ function tra() {
             type: 'normal'
         }
     ]);
+
     tray.setContextMenu(cmenu);
     tray.setToolTip('More');
 }
 
+
+function createFolder(){
+let homePath=os.homedir();
+homePath=homePath+`/widget$User`;
+fs.mkdir(`${homePath}`,(err,dir)=>{
+    if(err==null){
+let data=Buffer.from('dsfde','binary'); 
+
+fs.writeFile(`${homePath}/fs.bau`,data,(err,file)=>{
+    console.log(file);
+    
+})
+    }
+})
+
+}
 
 app.on('ready', createWidget)
