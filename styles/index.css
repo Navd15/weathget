@@ -51,7 +51,7 @@ width: 30px;
 }
 
 .noLocMsg {
-    /* filter: blur(1px); */
+
     background-color: rgba(255, 255, 255, 0.729);
     height: 100%;
     backface-visibility: hidden;
@@ -61,6 +61,7 @@ width: 30px;
 }
 
 #list {
+    font-family: 'Raleway';
     color: black;
     background-color: rgb(222, 222, 222);
     display: block;
@@ -69,9 +70,31 @@ width: 30px;
 }
 
 .main #add {
-    padding: 8px 8px;
+padding: 8px;
+    cursor: pointer;
 }
 
+#search{
+    background-color: #00bdd9;
+    padding: 8px 8px;
+}
+#searchButton{
+    background-color: rgb(255, 255, 255);
+    padding: 0px 0px 0px 0px;
+    font-size: 10pt;
+    border-style: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+#searchInput{
+    padding: 1px 1px;
+    border-style: none;
+    width:60%;
+    height:6%;
+    font-size: 10pt;
+    border-radius: 6px;
+}
 .main #sett {
     border-radius: 100px;
     z-index: -9;
@@ -84,7 +107,7 @@ width: 30px;
 .main #slider {
     z-index: 9;
     position: absolute;
-    width: 35%;
+    width: 30%;
     height: 100%
 }
 
