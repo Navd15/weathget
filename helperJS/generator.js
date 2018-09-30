@@ -13,6 +13,7 @@ class gen {
                 li.setAttribute("onclick", `setListClick(this.id)`);
                 li.innerText = `${location.name}`;
                 ul.appendChild(li);
+                ul.appendChild(document.createElement('hr'));
             }
             resolve(true);
         })
