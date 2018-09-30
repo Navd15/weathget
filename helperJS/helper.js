@@ -1,7 +1,6 @@
 'use-strict';
-
 let replacer;
-
+let locList;
 /* Class contains keys and stuff for API calling */
 class Creds {
 
@@ -17,24 +16,25 @@ class Creds {
     }
 }
 
-/* This method triggeres when user selects the location from 
-list from html page
-*/
-function setListClick(id) {
+    /* This method triggeres when user selects the location from 
+    list from html page
+    */
+   function setListClick(id) {
     let key = Creds.Keys().key;
     let initialURL = Creds.Keys().initialURL;
     let url = `/current.json?key=${key}&q=${id}`
     fetch(`${initialURL}/${url}`).then((resolve) => {
         resolve.json().then((resolve) => {
-
             new FutureCast(id, initialURL, key).castRes().then((hourly) => {
 
+                /* Make an object of current weather and forecast weather */
                 let whole = {
                     currentCond: resolve,
                     hourCond: hourly
                 }
-
                 fill.makeHTML(whole, (res) => {
+                    $(locList).appendHTML = "";
+                    $(locList).css('display', 'none');
                     replacer.innerHTML = res;
                 })
             })
@@ -49,28 +49,25 @@ function setListClick(id) {
 
 }
 
-
-
 $(document).ready(function () {
     replacer = document.getElementById('replacer');
-     let search=$('#searchInput')[0];
-     console.log(search)
+    let search = $('#searchInput')[0];
+    console.log(search)
+    locList=$('#locList')[0];
     let go = $('#searchButton');
-     let locList=$('#locList')[0];
-     console.log(locList);
-     
-go.on('click',()=>{
-if(search.value!="")
-console.log(search.value);
-searchLoc(search.value).then((resolve)=>{
- gen.genList(resolve,locList).then((resolve)=>{
-/* Hide loading animation  */
-if(resolve==true)
-$(locList).css('display', 'block')
- })
 
-})
-})
+    go.on('click', () => {
+        if (search.value != "")
+            console.log(search.value);
+        searchLoc(search.value).then((resolve) => {
+            gen.genList(resolve, locList).then((resolve) => {
+                /* Hide loading animation  */
+                if (resolve == true)
+                    $(locList).css('display', 'block')
+            })
+
+        })
+    })
 
 
     /* --------------------------------------------------------------- */
@@ -82,15 +79,15 @@ $(locList).css('display', 'block')
             let url = `${initialURL}/search.json?key=${key}&q=${loc}`;
             fetch(url).then(
                 (response) => {
-                    if (response.status == 200){
+                    if (response.status == 200) {
                         response.json().then((locations) => {
                             resolve(locations)
                         })
                     }
-                },(reject)=>{
-                    err({'error':'Error at server side'})
-                    console.log('Some error occured in fetching data from server !'+reject);
-                    
+                }, (reject) => {
+                    err({ 'error': 'Error at server side' })
+                    console.log('Some error occured in fetching data from server !' + reject);
+
                 }
 
             )
@@ -99,6 +96,13 @@ $(locList).css('display', 'block')
 
 
     }
+
+
+
+
+
+
+
 }
 
 )
