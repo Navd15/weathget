@@ -5,12 +5,11 @@
         <script>
                 window.$ = window.jQuery = require('./res/addOnJS/jquery-3.3.1.min.js');
         </script>
-         <script   src="./helperJS/Info.js"></script>
+        <script src="./helperJS/Info.js"></script>
         <script src="./addLoc.js"></script>
         <script src="./helperJS/generator.js"></script>
         <script src="./helperJS/helper.js"></script>
         <link href="styles/index.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet"  type="text/css" href="./res/addOnJS/bootstrap/css/bootstrap.css" >
 </head>
 
 <body>
@@ -19,37 +18,37 @@
                         <header id="header">
                                 <nav>
                                         <img id="add" class="ico" src="res/img/plus.png">
-                                       
+
                                 </nav>
                                 <div id="search">
-                                                <input id="searchInput" type="search" placeholder="Search City">
-                                                <button id="searchButton" >Go</button>
-                                                <!-- <div>
+                                        <input id="searchInput" type="search" placeholder="Search City">
+                                        <button id="searchButton">Go</button>
+                                        <!-- <div>
 <ul  id="results">
 </ul>
                                         </div> -->
-                                                                                        </div>
-                                <ul id="list">
+                                </div>
+                                <ul id="locList">
                                         Locations
                                 </ul>
                         </header>
 
                 </div>
                 <div id="replacer">
-                <div class="noLocMsg">
-                        <p id="par_noLoc">
-                                No location found
-                        </p>
+                        <div class="noLocMsg">
+                                <p id="par_noLoc">
+                                        No location found
+                                </p>
 
-                        <button class="btn btn-primary" id="but_addLoc">
-                                Add Location
-                        </button>
-                        <p id="noNet">
-                                Unable to access network
-                                <br> Please try again.
-                        </p>
+                                <button class="btn btn-primary" id="but_addLoc">
+                                        Add Location
+                                </button>
+                                <p id="noNet">
+                                        Unable to access network
+                                        <br> Please try again.
+                                </p>
+                        </div>
                 </div>
-        </div>
 
 
                 <footer>
@@ -63,7 +62,7 @@
         <script>
                 require('./renderer.js')
         </script>
-        
+
 </body>
 
 </html>
