@@ -19,8 +19,8 @@ ul{
 
 .ico{
 
-height:30px ;
-width: 30px;
+height:20px ;
+width: 20px;
 
 }
 .noLocMsg #par_noLoc {
@@ -56,7 +56,6 @@ width: 30px;
 }
 
 .noLocMsg {
-
     background-color: rgba(255, 255, 255, 0.729);
     height: 100%;
     backface-visibility: hidden;
@@ -64,15 +63,23 @@ width: 30px;
     background: url("../res/img/pane.jpg") no-repeat;
     background-size: cover;
 }
+::-webkit-scrollbar{
+    width: 0px;
+}
 
-#list {
+#locList {
+    overflow: auto;
+    height: 74%;
     display: none;
-    margin-top: -40px;
+    margin-top: 0px;
     font-family: 'Raleway';
     color: black;
-    background-color: rgb(222, 222, 222);
-    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;    
     padding: 0px 8px;
+}
+#locList li{
+    margin-right: 0px;
 }
 
 .main #add {
@@ -105,8 +112,6 @@ padding: 8px;
     font-size: 10pt;
     border-radius: 6px;
 }
-
-
 #results{
     background-color:white;
 }
@@ -121,7 +126,7 @@ padding: 8px;
 
 .main #slider {
     z-index: 9;
-    position: absolute;
+    position: fixed;;
     width: 30%;
     height: 100%
 }
@@ -172,11 +177,11 @@ margin: auto;
 }   
 
 .list-group-item {
-    padding: 8px 20px !important;
+    padding: 5px 0px !important;
     border-radius: 0px !important;
 }
 
-#locUl li {
+#locList li {
     cursor: pointer;
 }
 #replacer{
