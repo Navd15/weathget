@@ -1,7 +1,6 @@
 /* Helper class for SW registration */
 
 class SWRegistration {
-
     constructor(container) {
 this._container=container;
     }
@@ -9,7 +8,7 @@ this._container=container;
     register_sw() {
         if (navigator.serviceWorker) {
 
-            navigator.serviceWorker.register('./sw.js', { scope: '/' }).then(event => {
+            navigator.serviceWorker.register('./sw.js').then(response => {
 
                 console.log("SW registered");
 
@@ -27,3 +26,7 @@ this._container=container;
 
 
 }
+
+
+const sw=new SWRegistration(document.getElementsByClassName('main'));
+sw.register_sw();
