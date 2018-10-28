@@ -29,8 +29,7 @@ const db=event.target.result;
 switch(event.oldVersion){
 case 0:
 db.createObjectStore('locations',{autoIncrement:true})
-
-
+WritableStreamDefaultWriter
 }
 }
 })
