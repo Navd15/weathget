@@ -1,5 +1,4 @@
-const {ipcRenderer,BrowserWindow} =require('electron');
-
+const {ipcRenderer,BrowserWindow,ipcMain} =require('electron');
 
 
 

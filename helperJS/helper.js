@@ -7,10 +7,8 @@ class Creds {
     static Keys() {
         return {
             key: `a2aa7c3e0225461dada105616172206`,  // Replace with your apixu API key | www.apixu.com
-            // key : 'A2V9GFbwbk8jX6F2V1jua6KcHKtAy7on',
-            // initialURL : `http://dataservice.accuweather.com`,
             initialURL: `http://api.apixu.com/v1`,
-            '12HourApi': `/forecast.json`,
+            '12HourApi': `/forecast.json`,  
 
         }
     }
@@ -19,6 +17,7 @@ class Creds {
     /* This method triggeres when user selects the location from 
     list from html page
     */
+
    function setListClick(id) {
     let key = Creds.Keys().key;
     let initialURL = Creds.Keys().initialURL;
@@ -32,6 +31,8 @@ class Creds {
                     currentCond: resolve,
                     hourCond: hourly
                 }
+                console.log(whole);
+                
                 fill.makeHTML(whole, (res) => {
                     $(locList).appendHTML = "";
                     $(locList).css('display', 'none');
@@ -50,6 +51,7 @@ class Creds {
 }
 
 $(document).ready(function () {
+
     replacer = document.getElementById('replacer');
     let search = $('#searchInput')[0];
     console.log(search)

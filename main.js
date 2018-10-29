@@ -23,7 +23,7 @@ transparent:true,
         width: 500,
         height: 290,
         resizable: true,
-        frame:false,
+        frame:true,
 
         webPreferences: {
             devTools: true
