@@ -51,10 +51,23 @@ class Creds {
 }
 
 $(document).ready(function () {
+Utils.checkIDB().then((response)=>{
+if (response.length>1){
+// set locations
+let locArray=[];
+for(let loc of response){
 
+
+}
+let permList=document.getElementById('#permLocList');
+
+}
+
+},(reject)=>{
+    // do nothing
+})
     replacer = document.getElementById('replacer');
     let search = $('#searchInput')[0];
-    console.log(search)
     locList=$('#locList')[0];
     let go = $('#searchButton');
 
