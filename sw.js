@@ -1,5 +1,5 @@
 const cacheName = 'weathCache-v2';
-
+           
 self.addEventListener('activate', event => {
     console.log(event);
 })
@@ -32,8 +32,6 @@ let saveToDb = (data) => {
         const cityName = `${data.location.name}_${data.location.region}_${data.location.country}`;
         idb.onupgradeneeded = (event) => {
             let objectStore;
-            
-            
             const db = event.target.result;
             console.log(event.oldVersion);
  
