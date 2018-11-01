@@ -66,7 +66,22 @@ width: 20px;
 ::-webkit-scrollbar{
     width: 0px;
 }
-
+#permLocList{
+ overflow: auto;
+    position: relative;
+    display: block;
+    margin-top: -43px;
+    font-family: 'Raleway';
+    color: black;
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+        padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 1px;
+}
+#permLocList{
+      margin-right: 0px;
+}
 #locList {
     overflow: auto;
     height: 74%;
@@ -79,6 +94,7 @@ width: 20px;
     padding: 0px 8px;
 }
 #locList li{
+    cursor: pointer;
     margin-right: 0px;
 }
 
@@ -181,9 +197,7 @@ margin: auto;
     border-radius: 0px !important;
 }
 
-#locList li {
-    cursor: pointer;
-}
+
 #replacer{
     height: 100%;
 }
