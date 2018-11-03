@@ -8,17 +8,17 @@ class Creds {
         return {
             key: `a2aa7c3e0225461dada105616172206`,  // Replace with your apixu API key | www.apixu.com
             initialURL: `http://api.apixu.com/v1`,
-            '12HourApi': `/forecast.json`,  
+            forecast: `/forecast.json`,
 
         }
     }
 }
 
-    /* This method triggeres when user selects the location from 
-    list from html page
-    */
+/* This method triggeres when user selects the location from 
+list from html page
+*/
 
-   function setListClick(id) {
+function setListClick(id) {
     let key = Creds.Keys().key;
     let initialURL = Creds.Keys().initialURL;
     let url = `/current.json?key=${key}&q=${id}`
@@ -32,7 +32,8 @@ class Creds {
                     hourCond: hourly
                 }
                 console.log(whole);
-                
+
+                localStorage.setItem(resolve.location.name, JSON.stringify(whole));
                 fill.makeHTML(whole, (res) => {
                     $(locList).appendHTML = "";
                     $(locList).css('display', 'none');
@@ -51,24 +52,28 @@ class Creds {
 }
 
 $(document).ready(function () {
-Utils.checkIDB().then((response)=>{
-if (response.length>1){
-// set locations
-let locArray=[];
-for(let loc of response){
+    Utils.checkIDB((response) => {
+        if (response.length >0) {
+            console.log(document.getElementById('permLocList'));
+            let permList = document.getElementById('permLocList');
+            for (let i of response) {
+                let tempLI = document.createElement('li');
+                let tempHR = document.createElement('hr');
+                tempLI.innerText = i;
+                permList.appendChild(tempLI);
+                permList.appendChild(tempHR);
+            }
+            /*Fetch weather for default location  */
+        }
+        else{
+document.getElementById('noLocMsg').style('display','block');
 
+        }
+    })
 
-}
-let permList=document.getElementById('#permLocList');
-
-}
-
-},(reject)=>{
-    // do nothing
-})
     replacer = document.getElementById('replacer');
     let search = $('#searchInput')[0];
-    locList=$('#locList')[0];
+    locList = $('#locList')[0];
     let go = $('#searchButton');
 
     go.on('click', () => {
@@ -130,7 +135,7 @@ class FutureCast {
         this.cityId = cityId;
         this.initialURL = initialURL;
         this.key = key;
-        this.api = Creds.Keys()["12HourApi"];
+        this.api = Creds.Keys()['forecast'];
     }
 
     /* For next 12 hours forecast */
