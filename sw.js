@@ -27,32 +27,36 @@ self.addEventListener('fetch', event => {
 
 
 let saveToDb = (data) => {
-    return new Promise((response, reject) => {
-        const idb = indexedDB.open(cacheName, 1);
-        const cityName = `${data.location.name}_${data.location.region}_${data.location.country}`;
-        idb.onupgradeneeded = (event) => {
-            let objectStore;
-            const db = event.target.result;
-            console.log(event.oldVersion);
+    console.log(self,this);
+    
+    // window.localStorage.setItem(data.location.name,data);
+    
+    // return new Promise((response, reject) => {
+    //     const idb = indexedDB.open(cacheName, 1);
+    //     const cityName = `${data.location.name}_${data.location.region}_${data.location.country}`;
+    //     idb.onupgradeneeded = (event) => {
+    //         let objectStore;
+    //         const db = event.target.result;
+    //         console.log(event.oldVersion);
  
-            if (event.oldVersion==0) {
-                    objectStore = db.createObjectStore('locations', { keyPath: 'name' });
+    //         if (event.oldVersion==0) {
+    //                 objectStore = db.createObjectStore('locations', { keyPath: 'name' });
 
-            }
+    //         }
 
-            objectStore.transaction.oncomplete = (event) => {
-                console.log(event);
-                const trx = db.transaction('locations', 'readwrite').objectStore('locations').put({ name: cityName, info: data.current });
-            }
+    //         objectStore.transaction.oncomplete = (event) => {
+    //             console.log(event);
+    //             const trx = db.transaction('locations', 'readwrite').objectStore('locations').put({ name: cityName, info: data.current });
+    //         }
 
-        }
+    //     }
 
-        idb.onsuccess = (event) => {
+    //     idb.onsuccess = (event) => {
 
-            const db = event.target.result;
-            const trx = db.transaction('locations', 'readwrite').objectStore('locations').put({ name: cityName, info: data.current });
+    //         const db = event.target.result;
+    //         const trx = db.transaction('locations', 'readwrite').objectStore('locations').put({ name: cityName, info: data.current });
 
-        }
+    //     }
 
-    })
+    // })
 }
