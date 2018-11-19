@@ -26,11 +26,10 @@ width: 20px;
 .noLocMsg #par_noLoc {
     width: fit-content;
     margin: auto;
-    font-size: 15px;
+    font-size: 25px;
     border-radius: 3px;
     padding: 8px 8px;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.8);
+    color: white;
     position: relative;
     text-align: center;
     display: block;
@@ -39,34 +38,36 @@ width: 20px;
     top: 24%;
 }
 
-.noLocMsg #but_addLoc {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 8px 8px;
-    border-radius: 3px;
-    color: black;
-    text-decoration: none;
-    max-width: fit-content;
-    top: 40%;
-}
+
 
 .noLocMsg {
+    display: none;
     background-color: rgba(255, 255, 255, 0.729);
     height: 100%;
     backface-visibility: hidden;
     background-blend-mode: hard-light;
-    background: url("../res/img/pane.jpg") no-repeat;
+    background: url("../res/img/pane.gif") no-repeat;
     background-size: cover;
 }
 ::-webkit-scrollbar{
     width: 0px;
 }
-
+#permLocList{
+ overflow: auto;
+    display: block;
+    margin-top: -43px;
+    font-family: 'Raleway';
+    color: black;
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+        padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 1px;
+}
+#permLocList{
+    cursor: pointer;
+      margin-right: 0px;
+}
 #locList {
     overflow: auto;
     height: 74%;
@@ -79,6 +80,7 @@ width: 20px;
     padding: 0px 8px;
 }
 #locList li{
+    cursor: pointer;
     margin-right: 0px;
 }
 
@@ -88,7 +90,7 @@ padding: 8px;
 }
 
 #search{
-    
+    box-shadow: 0 0 3px black;
     left: -150px;
     position: relative;
     background-image:url('../res/img/grad.png');
@@ -181,9 +183,7 @@ margin: auto;
     border-radius: 0px !important;
 }
 
-#locList li {
-    cursor: pointer;
-}
+
 #replacer{
     height: 100%;
 }

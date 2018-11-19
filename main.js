@@ -14,6 +14,7 @@ let win;
 let tray;
 
 function createWidget() {
+
     win = new BrowserWindow({
         skipTaskbar: false,
 transparent:true,
@@ -23,18 +24,19 @@ transparent:true,
         width: 500,
         height: 290,
         resizable: true,
-        frame:false,
+        frame:true,
 
         webPreferences: {
             devTools: true
         }
     })
     
-    createFolder();
+    // createFolder();
     if(os.platform=='win32'){
     tra();
     }
-
+// // indexedDB.open('')
+// win.webContents.send()
     win.loadFile('./index.html')
 
 }

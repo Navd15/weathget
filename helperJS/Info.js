@@ -1,11 +1,13 @@
 class fill {
     static makeHTML(result,cb) {
+        
         /* The require  statement will not work outside the class so use it here*/
         let fs = require('fs');
 
         fs.readFile('./views/main.html', 'utf8', (err, data) => {
 
             let src=result.hourCond;
+
             let date=new Date();
             let d=`${date.toDateString().split(" ")[1]} ${date.getDate()},${date.getFullYear()}`;
 

@@ -16,12 +16,12 @@
                                         <button id="searchButton">Go</button>
                                         <!-- <div>
 <ul  id="results">
-</ul>
+</ulf>
                                         </div> -->
                                 </div>
-                                <ul id="locList">
-                                        Locations
-                                </ul>
+                                <ul id="permLocList">
+                            </ul>
+                                <ul id="locList">Locations</ul>
                         </header>
 
                 </div>
@@ -30,10 +30,6 @@
                                 <p id="par_noLoc">
                                         No location found
                                 </p>
-
-                                <button class="btn btn-primary" id="but_addLoc">
-                                        Add Location
-                                </button>
                                 <p id="noNet">
                                         Unable to access network
                                         <br> Please try again.
@@ -51,11 +47,13 @@
  <script>
                 window.$ = window.jQuery = require('./res/addOnJS/jquery-3.3.1.min.js');
         </script>
+        <script src="./helperJS/Utils.js"></script>
         <script src="./helperJS/Info.js"></script>
         <script src="./addLoc.js"></script>
         <script src="./helperJS/generator.js"></script>
         <script src="./helperJS/helper.js"></script>
         <script src="res/anim/jsanim.js"></script>
+        <script  src="sw/registerSW.js"> </script>
         <script>
                 require('./renderer.js')
         </script>
