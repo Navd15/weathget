@@ -22,6 +22,7 @@ function setListClick(id) {
     let key = Creds.Keys().key;
     let initialURL = Creds.Keys().initialURL;
     let url = `/current.json?key=${key}&q=${id}`
+
     fetch(`${initialURL}/${url}`).then((resolve) => {
         resolve.json().then((resolve) => {
             new FutureCast(id, initialURL, key).castRes().then((hourly) => {
@@ -31,7 +32,8 @@ function setListClick(id) {
                     currentCond: resolve,
                     hourCond: hourly
                 }
-                console.log(whole);
+                
+                whole.id
 
                 localStorage.setItem(resolve.location.name, JSON.stringify(whole));
                 fill.makeHTML(whole, (res) => {
@@ -53,6 +55,7 @@ function setListClick(id) {
 
 $(document).ready(function () {
     Utils.checkIDB((response) => {
+
         if (response.length >0) {
             console.log(document.getElementById('permLocList'));
             let permList = document.getElementById('permLocList');
@@ -64,9 +67,12 @@ $(document).ready(function () {
                 permList.appendChild(tempHR);
             }
             /*Fetch weather for default location  */
+
+            
         }
+
         else{
-document.getElementById('noLocMsg').style('display','block');
+document.getElementsByClassName('noLocMsg')[0].style.display='block';
 
         }
     })
