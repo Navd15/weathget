@@ -6,7 +6,7 @@ class Creds {
 
     static Keys() {
         return {
-            key: `a2aa7c3e0225461dada105616172206`,  // Replace with your apixu API key | www.apixu.com
+            key: `a2aa7c3e0225461dada105616172206`, // Replace with your apixu API key | www.apixu.com
             initialURL: `http://api.apixu.com/v1`,
             forecast: `/forecast.json`,
 
@@ -18,118 +18,135 @@ class Creds {
 list from html page
 */
 
-function setListClick(id) {
-    let key = Creds.Keys().key;
-    let initialURL = Creds.Keys().initialURL;
-    let url = `/current.json?key=${key}&q=${id}`
+function setListClick(id, network = true, data = null) {
+    if (network == true || data == null) {
 
-    fetch(`${initialURL}/${url}`).then((resolve) => {
-        resolve.json().then((resolve) => {
-            new FutureCast(id, initialURL, key).castRes().then((hourly) => {
+        let key = Creds.Keys().key;
+        let initialURL = Creds.Keys().initialURL;
+        let url = `/current.json?key=${key}&q=${id}`
 
-                /* Make an object of current weather and forecast weather */
-                let whole = {
-                    currentCond: resolve,
-                    hourCond: hourly
-                }
-                
-                whole.id
+        fetch(`${initialURL}/${url}`).then((resolve) => {
+            resolve.json().then((resolve) => {
 
-                localStorage.setItem(resolve.location.name, JSON.stringify(whole));
-                fill.makeHTML(whole, (res) => {
-                    $(locList).appendHTML = "";
-                    $(locList).css('display', 'none');
-                    replacer.innerHTML = res;
+                new FutureCast(id, initialURL, key).castRes().then((hourly) => {
+
+                    /* Make an object of current weather and forecast weather */
+                    let whole = {
+                        currentCond: resolve,
+                        hourCond: hourly
+                    }
+
+                    whole['id'] = id;
+                    localStorage.setItem(resolve.location.name, JSON.stringify(whole));
+                    fill.makeHTML(whole, (res) => {
+                        $(locList).appendHTML = "";
+                        $(locList).css('display', 'none');
+                        replacer.innerHTML = res;
+                    })
                 })
+
+
+
             })
 
-
-
+        }, (reject) => {
+            console.log("Rejected");
         })
 
-    }, (reject) => {
-        console.log("Rejected");
-    })
+    } else {
+        fill.makeHTML(data, (res) => {
+            $(locList).appendHTML = "";
+            $(locList).css('display', 'none');
+            replacer.innerHTML = res;
+        })
+
+    }
 
 }
 
 $(document).ready(function () {
-    Utils.checkIDB((response) => {
+        Utils.checkIDB((response) => {
 
-        if (response.length >0) {
-            console.log(document.getElementById('permLocList'));
-            let permList = document.getElementById('permLocList');
-            for (let i of response) {
-                let tempLI = document.createElement('li');
-                let tempHR = document.createElement('hr');
-                tempLI.innerText = i;
-                permList.appendChild(tempLI);
-                permList.appendChild(tempHR);
+            if (response.length > 0) {
+                console.log(document.getElementById('permLocList'));
+                let permList = document.getElementById('permLocList');
+                for (let i of response) {
+                    let tempLI = document.createElement('li');
+                    let tempHR = document.createElement('hr');
+                    tempLI.innerText = i;
+                    permList.appendChild(tempLI);
+                    permList.appendChild(tempHR);
+                }
+                /*Fetch weather for default location  */
+let data=localStorage.getItem(response[0]);
+if (navigator.onLine){setListClick(data.id)}
+else{
+    setListClick(data.id, false,data )
+}
+
+
+                
+            } else {
+                document.getElementsByClassName('noLocMsg')[0].style.display = 'block';
+
             }
-            /*Fetch weather for default location  */
+        })
 
-            
-        }
+        replacer = document.getElementById('replacer');
+        let search = $('#searchInput')[0];
+        locList = $('#locList')[0];
+        let go = $('#searchButton');
 
-        else{
-document.getElementsByClassName('noLocMsg')[0].style.display='block';
+        go.on('click', () => {
+            if (search.value != "")
+                console.log(search.value);
+            searchLoc(search.value).then((resolve) => {
+                gen.genList(resolve, locList).then((resolve) => {
+                    /* Hide loading animation  */
+                    if (resolve == true)
+                        $(locList).css('display', 'block')
+                })
 
-        }
-    })
+            })
+        })
 
-    replacer = document.getElementById('replacer');
-    let search = $('#searchInput')[0];
-    locList = $('#locList')[0];
-    let go = $('#searchButton');
 
-    go.on('click', () => {
-        if (search.value != "")
-            console.log(search.value);
-        searchLoc(search.value).then((resolve) => {
-            gen.genList(resolve, locList).then((resolve) => {
-                /* Hide loading animation  */
-                if (resolve == true)
-                    $(locList).css('display', 'block')
+        /* --------------------------------------------------------------- */
+
+        function searchLoc(loc) {
+            let key = Creds.Keys().key;
+            let initialURL = Creds.Keys().initialURL;
+            return new Promise((resolve, err) => {
+                let url = `${initialURL}/search.json?key=${key}&q=${loc}`;
+                fetch(url).then(
+                    (response) => {
+                        if (response.status == 200) {
+                            response.json().then((locations) => {
+                                resolve(locations)
+                            })
+                        }
+                    }, (reject) => {
+                        err({
+                            'error': 'Error at server side'
+                        })
+                        console.log('Some error occured in fetching data from server !' + reject);
+
+                    }
+
+                )
+
             })
 
-        })
-    })
+
+        }
 
 
-    /* --------------------------------------------------------------- */
 
-    function searchLoc(loc) {
-        let key = Creds.Keys().key;
-        let initialURL = Creds.Keys().initialURL;
-        return new Promise((resolve, err) => {
-            let url = `${initialURL}/search.json?key=${key}&q=${loc}`;
-            fetch(url).then(
-                (response) => {
-                    if (response.status == 200) {
-                        response.json().then((locations) => {
-                            resolve(locations)
-                        })
-                    }
-                }, (reject) => {
-                    err({ 'error': 'Error at server side' })
-                    console.log('Some error occured in fetching data from server !' + reject);
 
-                }
 
-            )
-
-        })
 
 
     }
-
-
-
-
-
-
-
-}
 
 )
 
