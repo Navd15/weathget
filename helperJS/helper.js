@@ -1,6 +1,7 @@
 'use-strict';
 let replacer;
 let locList;
+let now;  //Selected loc right now.Update it with each click on location list
 /* Class contains keys and stuff for API calling */
 class Creds {
 
@@ -74,18 +75,19 @@ $(document).ready(function () {
                     let tempLI = document.createElement('li');
                     let tempHR = document.createElement('hr');
                     tempLI.innerText = i;
+                    tempLI.classList.add('fromLocalSto');
                     permList.appendChild(tempLI);
                     permList.appendChild(tempHR);
                 }
                 /*Fetch weather for default location  */
-let data=localStorage.getItem(response[0]);
+let data=JSON.parse(localStorage.getItem(response[0]));
+console.log(data);
+
 if (navigator.onLine){setListClick(data.id)}
 else{
     setListClick(data.id, false,data )
 }
 
-
-                
             } else {
                 document.getElementsByClassName('noLocMsg')[0].style.display = 'block';
 

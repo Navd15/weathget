@@ -14,14 +14,13 @@ body {
 }
 
 ul{
-    list-style: none;;
+    list-style: none;
 }
 
 .ico{
-
 height:20px ;
 width: 20px;
-
+cursor: pointer;
 }
 .noLocMsg #par_noLoc {
     width: fit-content;
@@ -279,7 +278,11 @@ margin-bottom: 0px !important;}
     display: flex;
     list-style: none;
 }
+.listSelect{
+    background-color: gray;
+}
 li{
+    width: 100%;
 text-align: center;
     margin-right: 20%;
 }
