@@ -1,8 +1,10 @@
 'use-strict';
 let replacer;
 let locList;
-let now;  //Selected loc right now.Update it with each click on location list
+let now;  /*Selected location right now.Update it with each click on location list*/
+
 /* Class contains keys and stuff for API calling */
+
 class Creds {
 
     static Keys() {
@@ -20,6 +22,7 @@ list from html page
 */
 
 function setListClick(id, network = true, data = null) {
+    if(id!=now){
     if (network == true || data == null) {
 
         let key = Creds.Keys().key;
@@ -38,11 +41,13 @@ function setListClick(id, network = true, data = null) {
                     }
 
                     whole['id'] = id;
+                    now=id;
                     localStorage.setItem(resolve.location.name, JSON.stringify(whole));
                     fill.makeHTML(whole, (res) => {
                         $(locList).appendHTML = "";
                         $(locList).css('display', 'none');
-                        replacer.innerHTML = res;
+                        replacer.innerHTML="";
+                        replacer.innerHTML=res;
                     })
                 })
 
@@ -58,36 +63,47 @@ function setListClick(id, network = true, data = null) {
         fill.makeHTML(data, (res) => {
             $(locList).appendHTML = "";
             $(locList).css('display', 'none');
-            replacer.innerHTML = res;
+            replacer.innerHTML="";
+                        replacer.innerHTML=res;
         })
 
     }
 
 }
-
+}
 $(document).ready(function () {
         Utils.checkIDB((response) => {
-
             if (response.length > 0) {
                 console.log(document.getElementById('permLocList'));
                 let permList = document.getElementById('permLocList');
+                let data=JSON.parse(localStorage.getItem(response[0]));
+                    
                 for (let i of response) {
                     let tempLI = document.createElement('li');
                     let tempHR = document.createElement('hr');
                     tempLI.innerText = i;
+                    tempLI.id=i
                     tempLI.classList.add('fromLocalSto');
+
+                   
+                    tempLI.addEventListener('click',(event)=>{
+                        if (navigator.onLine){setListClick(event.srcElement.id)}
+                        else{
+                            let data=JSON.parse(localStorage.getItem(event.srcElement.id));
+                            console.log(data);
+                            setListClick(event.srcElement.id, false,data)
+                        }
+                        
+                    })
+
                     permList.appendChild(tempLI);
                     permList.appendChild(tempHR);
                 }
                 /*Fetch weather for default location  */
-let data=JSON.parse(localStorage.getItem(response[0]));
-console.log(data);
-
 if (navigator.onLine){setListClick(data.id)}
 else{
     setListClick(data.id, false,data )
 }
-
             } else {
                 document.getElementsByClassName('noLocMsg')[0].style.display = 'block';
 
