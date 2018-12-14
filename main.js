@@ -7,6 +7,7 @@ const {
     Menu
 } = require('electron');
 
+const path=require('path');
 const fs=require('fs');
 const os = require('os');
 
@@ -14,35 +15,33 @@ let win;
 let tray;
 
 function createWidget() {
-
     win = new BrowserWindow({
         skipTaskbar: false,
-transparent:true,
+        transparent:true,
+        frame:false,
         alwaysOnTop: false,
-        hasShadow: true,
+        backgroundColor:'#000000',
         movable:true,
         width: 500,
         height: 290,
-        resizable: true,
-        frame:true,
-
         webPreferences: {
             devTools: true
         }
     })
-    
     // createFolder();
     if(os.platform=='win32'){
     tra();
     }
 // // indexedDB.open('')
 // win.webContents.send()
-    win.loadFile('./index.html')
+win.loadFile('./index.html');
 
 }
 
+/* Only for windows */
 function tra() {
-    tray = new Tray('./res/img/tray.ico');
+    const rah=path.join(__dirname,'res/img/tray.ico');  //Path to tray icon
+    tray = new Tray(rah);
     const cmenu = Menu.buildFromTemplate([{
             label: 'About',
             type: 'normal'
