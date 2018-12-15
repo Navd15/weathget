@@ -18,8 +18,8 @@ ul{
 }
 
 .ico{
-height:20px ;
-width: 20px;
+height:15px ;
+width: 15px;
 cursor: pointer;
 }
 .noLocMsg #par_noLoc {
@@ -122,7 +122,7 @@ padding: 8px;
     opacity: 0.6;
     padding: 10px 10px;
     bottom: 0px;
-    position: absolute;
+    position: fixed;
 }
 
 .main #slider {
@@ -216,15 +216,27 @@ margin: auto;
 }
 
 .cityInfo{
-    position: sticky;
-    top: 2%;
+    position: fixed;
 
 }
 
+.navButton{
+   padding: 5px;
+    position: fixed;
+    top: 40%;
+}
+#Next{
+    left: 28%;
+}
+#Prev{
+    right: 92%;
+}
 .cityInfo .cityName{
+    position: fixed;
 letter-spacing: 1px;
  font-family: YantraManav; 
 font-weight: 400;
+margin-left: 18px;
 font-size: 10pt;
 text-align:left;
 }
@@ -232,13 +244,13 @@ text-align:left;
     font-weight: 100;
     font-family: YantraManav;
     margin-bottom: 0px;
-    margin-top: 65%;
-    padding-left:30px;
-font-size:80px;
+    margin-top: 50%;
+    padding-left: 40px;
+    font-size: 100px
 }
 .cityInfo #day{
     font-weight: 400;
-    padding-left:40px; 
+   margin-left:35%; 
    font-size: 10pt !important; 
 }
 #condition{
@@ -277,6 +289,12 @@ margin-bottom: 0px !important;}
     text-align: center;
     display: flex;
     list-style: none;
+}
+#refresh{
+padding: 10px 10px;
+margin-top:10%;
+position: fixed; 
+
 }
 .listSelect{
     background-color: gray;
