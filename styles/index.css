@@ -220,17 +220,6 @@ margin: auto;
 
 }
 
-.navButton{
-   padding: 5px;
-    position: fixed;
-    top: 40%;
-}
-#Next{
-    left: 28%;
-}
-#Prev{
-    right: 92%;
-}
 .cityInfo .cityName{
     position: fixed;
 letter-spacing: 1px;
