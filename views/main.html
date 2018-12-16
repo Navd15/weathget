@@ -3,8 +3,8 @@
         <div class="cityInfo">
             <h1 id="day">${now.date}</h1>
             <div>
-                
-                  <span id="refresh">  <img src="res/img/refresh.png" class="ico" alt="Refresh" title="Refresh" ></span>
+
+                <span id="refresh"> <img src="res/img/refresh.png" class="ico" alt="Refresh" title="Refresh"></span>
                 <h1 id="temp">${now.temp}&deg;<br><span class="cityName">${now.name}<br><span id="condition">${now.condition}</span></span></h1>
 
             </div>
@@ -12,7 +12,7 @@
     </div>
     <div id="stats">
         <div class="info">
-            <h1 id="statistics">Statistics</h1>
+            <h1 class="head" id="statistics">Current</h1>
             <hr>
             <ul id="detail">
                 <li class="li Icons">
@@ -43,10 +43,68 @@
                 </li>
             </ul>
         </div>
-        
-<div id="pred">
-        <h1 class="head">Forecast</h1>
-</div>
+
+        <div id="pred">
+            <div class="info">
+                <h1 class="head">Forecast</h1>
+                <hr>
+                <div>
+                    <ul id="forecast">
+                        <li class="forecast-li"> <span>
+                                <p>DATE</p>
+                                <figure><img src="./res/img/icons/rain.png">
+                                    <figcaption>20%</figcaption>
+                                </figure>
+                               
+                                <figure><img src="./res/img/icons/air.png">
+                                    <figcaption>20%</figcaption>
+                                </figure>
+                                <figure><img src="./res/img/icons/cloud.png">
+                                    <figcaption>20%</figcaption>
+                                </figure>
+                                <p style="margin-left:10px">Patchy Rain</p>
+                            </span> </li>
+                            <li class="forecast-li"> <span>
+                                    <p>DATE</p>
+                                    <figure><img src="./res/img/icons/rain.png">
+                                        <br>
+                                        <figcaption>20%</figcaption>
+                                    </figure>
+                                   
+                                    <figure><img src="./res/img/icons/air.png">
+                                        <figcaption>20%</figcaption>
+                                    </figure>
+                                    <figure><img src="./res/img/icons/cloud.png">
+                                        <figcaption>20%</figcaption>
+                                    </figure>
+                                    <p style="margin-left:10px">Patchy Rain</p>
+                                </span> </li>
+                                <li class="forecast-li"> <span>
+                                        <p>DATE</p>
+                                        <figure><img src="./res/img/icons/rain.png">
+                                            <figcaption>20%</figcaption>
+                                        </figure>
+                                     
+                                        <figure><img src="./res/img/icons/air.png">
+                                            <figcaption>20%</figcaption>
+                                        </figure>
+                                        <figure><img src="./res/img/icons/cloud.png">
+                                            <figcaption>20%</figcaption>
+                                        </figure>
+                                        <p style="margin-left:10px">Patchy Rain</p>
+                                    </span> </li>
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
 
     </div>
 
