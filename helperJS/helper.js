@@ -1,7 +1,8 @@
 'use-strict';
 let replacer;
 let locList;
-let now;  /*Selected location right now.Update it with each click on location list*/
+let locations = []; /* Array to sync locations from local Storage */
+let now; /*Selected location index  from above array.Update it with each click on location list*/
 
 /* Class contains keys and stuff for API calling */
 
@@ -22,91 +23,118 @@ list from html page
 */
 
 function setListClick(id, network = true, data = null) {
-    if(id!=now){
-    if (network == true || data == null) {
+    if (id != now) {
+        if (network == true || data == null) {
 
-        let key = Creds.Keys().key;
-        let initialURL = Creds.Keys().initialURL;
-        let url = `/current.json?key=${key}&q=${id}`
+            let key = Creds.Keys().key;
+            let initialURL = Creds.Keys().initialURL;
+            let url = `/forecast.json?key=${key}&q=${id}&days=10`
 
-        fetch(`${initialURL}/${url}`).then((resolve) => {
-            resolve.json().then((resolve) => {
+            fetch(`${initialURL}/${url}`).then((resolve) => {
+                resolve.json().then((resolve) => {
 
-                new FutureCast(id, initialURL, key).castRes().then((hourly) => {
+                    new FutureCast(id, initialURL, key).castRes().then((hourly) => {
 
-                    /* Make an object of current weather and forecast weather */
-                    let whole = {
-                        currentCond: resolve,
-                        hourCond: hourly
-                    }
+                        /* Make an object of current weather and forecast weather */
+                        let whole = {
+                            currentCond: resolve,
+                            hourCond: hourly
+                        }
 
-                    whole['id'] = id;
-                    now=id;
-                    localStorage.setItem(resolve.location.name, JSON.stringify(whole));
-                    fill.makeHTML(whole, (res) => {
-                        $(locList).appendHTML = "";
-                        $(locList).css('display', 'none');
-                        replacer.innerHTML="";
-                        replacer.innerHTML=res;
+                        whole['id'] = id;
+                        now = id;
+                        localStorage.setItem(resolve.location.name, JSON.stringify(whole));
+                        fill.makeHTML(whole, (res) => {
+                            $(locList).appendHTML = "";
+                            $(locList).css('display', 'none');
+                            replacer.innerHTML = "";
+                            replacer.innerHTML = res;
+                        })
                     })
+
+
+
                 })
 
-
-
+            }, (reject) => {
+                console.log("Rejected");
             })
 
-        }, (reject) => {
-            console.log("Rejected");
-        })
+        } else {
+            fill.makeHTML(data, (res) => {
+                $(locList).appendHTML = "";
+                $(locList).css('display', 'none');
+                replacer.innerHTML = "";
+                replacer.innerHTML = res;
+            })
 
-    } else {
-        fill.makeHTML(data, (res) => {
-            $(locList).appendHTML = "";
-            $(locList).css('display', 'none');
-            replacer.innerHTML="";
-                        replacer.innerHTML=res;
-        })
+        }
 
     }
-
-}
 }
 $(document).ready(function () {
         Utils.checkIDB((response) => {
+
             if (response.length > 0) {
-                console.log(document.getElementById('permLocList'));
+                locations = response;
+
+                function next(arg) {
+                    if(arg==='Prev'){
+                        if(now>0){
+                            const locData=JSON.parse(localStorage.getItem(locations[now-1]));
+                            if(navigator.onLine){
+                                setListClick(locData.id);
+                            }
+                            else{
+                                setListClick(locData.id,false,locData);
+                            }
+                        }
+                    }
+                    if(arg=='Next'){
+if(now<locations.length){
+    const locData=JSON.parse(localStorage.getItem(locations[now-1]));
+    if(navigator.onLine){
+        setListClick(locData.id);
+    }
+    else{
+        setListClick(locData.id,false,locData);
+    }
+
+}
+                    }
+                }
+
                 let permList = document.getElementById('permLocList');
-                let data=JSON.parse(localStorage.getItem(response[0]));
-                    
+                let data = JSON.parse(localStorage.getItem(response[0]));
+                now = 0;
                 for (let i of response) {
                     let tempLI = document.createElement('li');
                     let tempHR = document.createElement('hr');
                     tempLI.innerText = i;
-                    tempLI.id=i
+                    tempLI.id = i
                     tempLI.classList.add('fromLocalSto');
-
-                   
-                    tempLI.addEventListener('click',(event)=>{
-                        if (navigator.onLine){setListClick(event.srcElement.id)}
-                        else{
-                            let data=JSON.parse(localStorage.getItem(event.srcElement.id));
+                    tempLI.addEventListener('click', (event) => {
+                        if (navigator.onLine) {
+                            setListClick(event.srcElement.id)
+                        } else {
+                            let data = JSON.parse(localStorage.getItem(event.srcElement.id));
                             console.log(data);
-                            setListClick(event.srcElement.id, false,data)
+                            setListClick(event.srcElement.id, false, data)
                         }
-                        
+
                     })
 
                     permList.appendChild(tempLI);
                     permList.appendChild(tempHR);
                 }
                 /*Fetch weather for default location  */
-if (navigator.onLine){setListClick(data.id)}
-else{
-    setListClick(data.id, false,data )
-}
+                if (navigator.onLine) {
+                    setListClick(data.id)
+                } else {
+                    setListClick(data.id, false, data)
+                }
             } else {
                 document.getElementsByClassName('noLocMsg')[0].style.display = 'block';
-
             }
         })
 
